@@ -102,7 +102,7 @@ enabled() ->
 init([]) ->
     process_flag(trap_exit, true),
     Shlib = "sendfile_drv",
-    Dir = filename:dirname(code:which(?MODULE)) ++ "/../priv",
+    Dir = code:priv_dir(?MODULE),
     case erl_ddll:load_driver(Dir, Shlib) of
         ok -> ok;
         {error, already_loaded} -> ok;
