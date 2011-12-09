@@ -37,6 +37,15 @@
 #include "erl_driver_compat.h"
 #endif
 
+/*
+ * previously drv_output(..., int len)
+ * since R15B drv_output(..., ErlDrvSizeT len)
+ * use int if OTP < R15B
+ */
+#if ERL_DRV_EXTENDED_MAJOR_VERSION < 2
+typedef int ErlDrvSizeT;
+#endif
+
 #include "hashtable.h"
 
 #define lshift_index(s, i, shift, t) (((t)((unsigned char*)(s))[i]) << (shift))
@@ -199,7 +208,8 @@ static ssize_t sendfile_call(int out_fd, int in_fd, off_t* offset, size_t count)
 #endif
 }
 
-static void sendfile_drv_output(ErlDrvData handle, char* buf, int buflen)
+static void sendfile_drv_output(ErlDrvData handle, char* buf,
+                                ErlDrvSizeT buflen)
 {
     int fd, socket_fd;
     Desc* d = (Desc*)handle;
@@ -208,7 +218,7 @@ static void sendfile_drv_output(ErlDrvData handle, char* buf, int buflen)
     socket_fd = get_int32(&(b.args->out_fd));
     fd = open(b.args->filename, O_RDONLY | O_NONBLOCK);
     if (fd < 0) {
-        int out_buflen = set_error_buffer(&b, socket_fd, errno);
+        ErlDrvSizeT out_buflen = set_error_buffer(&b, socket_fd, errno);
         driver_output(d->port, buf, out_buflen);
     } else {
         Transfer* xfer;
@@ -220,12 +230,14 @@ static void sendfile_drv_output(ErlDrvData handle, char* buf, int buflen)
                driver stops, or if an insertion error occurs below. */
             xfer = (Transfer*)malloc(sizeof(Transfer));
             if (xfer == NULL) {
-                int out_buflen = set_error_buffer(&b, socket_fd, ENOMEM);
+                ErlDrvSizeT out_buflen = set_error_buffer(&b, socket_fd,
+                                                          ENOMEM);
                 driver_output(d->port, buf, out_buflen);
                 return;
             }
             if (!hashtable_insert(d->xfer_table, sfd.hashkey, xfer)) {
-                int out_buflen = set_error_buffer(&b, socket_fd, ENOMEM);
+                ErlDrvSizeT out_buflen = set_error_buffer(&b, socket_fd,
+                                                          ENOMEM);
                 driver_output(d->port, buf, out_buflen);
                 free(xfer);
                 return;
@@ -268,7 +280,7 @@ static void sendfile_drv_ready_output(ErlDrvData handle, ErlDrvEvent ev)
         }
     } else {
         int save_errno = errno;
-        int out_buflen;
+        ErlDrvSizeT out_buflen;
         char buf[36];
         Buffer b;
         b.buffer = buf;
