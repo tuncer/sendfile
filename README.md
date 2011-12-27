@@ -1,7 +1,9 @@
 Erlang sendfile() linked-in driver
 ==================================
 
-**sendfile** is a linked-in driver for the sendfile syscall.
+*Deprecated: use [file:sendfile](http://www.erlang.org/doc/man/file.html#sendfile-2) (available since OTP R15B)*
+
+**sendfile** is a linked-in driver for the sendfile(2) syscall.
 
 Based on original driver from [yaws](http://yaws.hyber.org).
 
