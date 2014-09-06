@@ -1,6 +1,7 @@
-.eunit
-c_src/*.o
-ebin/*.beam
-ebin/sendfile.app
-priv/*.so
-support/rebar
+/.rebar
+/.eunit
+/c_src/*.o
+/ebin/*.beam
+/ebin/sendfile.app
+/priv/*.so
+/support/rebar
