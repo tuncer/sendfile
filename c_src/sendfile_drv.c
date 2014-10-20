@@ -272,7 +272,8 @@ static void sendfile_drv_ready_output(ErlDrvData handle, ErlDrvEvent ev)
     cur_offset = xfer->offset;
     result = sendfile_call(sfd->socket_fd, xfer->file_fd,
                            &xfer->offset, xfer->count);
-    if (result < 0 && (errno == EAGAIN || errno == EWOULDBLOCK)) {
+    if (result < 0 && (errno == EAGAIN || errno == EWOULDBLOCK ||
+                       errno == EINPROGRESS || errno == EALREADY)) {
         if (xfer->offset != cur_offset) {
             off_t written = xfer->offset - cur_offset;
             xfer->count -= written;
