@@ -1,6 +1,6 @@
 {application, sendfile,
  [{description, "sendfile linked-in driver"},
-  {vsn, git},
+  {vsn, "1.1"},
   {modules, []},
   {applications, [
                   kernel,
