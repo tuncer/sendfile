@@ -4,7 +4,7 @@ REBAR=@`sh -c "PATH='$(PATH)':support which rebar\
 	||support/getrebar||echo false"`
 
 all:
-	$(REBAR) compile eunit
+	$(REBAR) compile
 
 clean:
 	$(REBAR) clean
