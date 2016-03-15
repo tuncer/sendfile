@@ -1,0 +1,52 @@
+%% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%% ex: ts=4 sw=4 ft=erlang et
+
+CommonOpts =
+    [
+        {erl_opts,
+            [{
+              platform_define,
+              "(linux|freebsd|dragonfly|solaris|darwin)",
+              'HAVE_SENDFILE'
+            }]
+        },
+        {port_env, [{"DRV_CFLAGS", "$DRV_CFLAGS -O3 -Wall"},
+            {"solaris", "LDFLAGS", "$LDFLAGS -lsendfile"}]},
+        {port_specs, [{"priv/sendfile_drv.so",
+            ["c_src/sendfile_drv.c","c_src/hashtable.c"]}]}
+    ].
+
+Rebar3ExtraOpts =
+    [
+     {plugins, [pc]},
+     {artifacts, ["priv/sendfile_drv.so"]},
+     {provider_hooks,
+      [
+       {pre,
+        [
+         {compile, {pc, compile}},
+         {clean, {pc, clean}}
+        ]
+       }
+      ]
+     }
+    ].
+
+Config = fun() ->
+                 case erlang:function_exported(rebar3, main, 1) of
+                     true -> % rebar3
+                         CommonOpts ++ Rebar3ExtraOpts;
+                     false -> % rebar 2.x or older
+                         CommonOpts
+                 end
+         end.
+
+%% If env var DEBUG_CONFIG is set, log config term.
+case os:getenv("DEBUG_CONFIG") of
+    false ->
+        Config();
+    _ ->
+        C = Config(),
+        io:format("rebar config:~n~p~n", [C]),
+        C
+end.

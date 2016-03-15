@@ -5,3 +5,5 @@
 /ebin/*.beam
 /priv/*.so
 /support/rebar
+/_build
+/rebar.lock
