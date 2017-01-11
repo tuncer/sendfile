@@ -1,6 +1,10 @@
 # Change Log
 Noteworthy changes to this project will be documented in this file.
 
+## 1.3.1 - 2017-01-11
+### Changed
+- Update copyright years.
+
 ## 1.3.0 - 2016-03-15
 ### Changed
 - Implement rebar3 support.
