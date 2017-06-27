@@ -1,6 +1,10 @@
 # Change Log
 Noteworthy changes to this project will be documented in this file.
 
+## 1.3.2 - 2017-06-27
+### Changed
+- getrebar: sync with re2/support/getrebar
+
 ## 1.3.1 - 2017-01-11
 ### Changed
 - Update copyright years.

@@ -1,6 +1,6 @@
 {application, sendfile,
  [{description, "sendfile linked-in driver"},
-  {vsn, "1.3.1"},
+  {vsn, "1.3.2"},
   {modules,
    [
     sendfile,
