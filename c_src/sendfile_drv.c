@@ -1,8 +1,8 @@
 /* -*- indent-tabs-mode: nil;c-basic-offset: 4 -*-              */
 /* ex: ts=4 sw=4 sts=4 et                                       */
 /*                                                              */
-/* Copyright 2008-2017 Steve Vinoski. All Rights Reserved.      */
-/* Copyright 2010-2017 Tuncer Ayaz. All Rights Reserved.        */
+/* Copyright 2008-2018 Steve Vinoski. All Rights Reserved.      */
+/* Copyright 2010-2018 Tuncer Ayaz. All Rights Reserved.        */
 /* Use of this source code is governed by a BSD-style           */
 /* license that can be found in the LICENSE file.               */
 /*                                                              */
