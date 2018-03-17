@@ -1,0 +1,9 @@
+{application, sendfile,
+ [ {description, "sendfile linked-in driver"}
+ , {vsn, "1.3.4"}
+ , {modules, []}
+ , {applications, [kernel, stdlib]}
+ , {registered, [sendfile]}
+ , {mod, {sendfile_app, []}}
+ , {env, []}
+ ]}.

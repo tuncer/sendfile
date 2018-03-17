@@ -10,7 +10,7 @@ Based on original driver from [yaws](http://yaws.hyber.org).
 Building and Installing
 -----------------------
 
-sendfile is built with [rebar](https://github.com/rebar/rebar/) and we do
-expect `rebar` to be in the search `PATH`. If `rebar` can not be found in the
-search `PATH`, it will be automatically downloaded to `support/rebar` for local
+sendfile is built with [rebar3](https://github.com/erlang/rebar3/) and we do
+expect `rebar3` to be in the search `PATH`. If `rebar3` can not be found in the
+search `PATH`, it will be automatically downloaded to `support/rebar3` for local
 use.

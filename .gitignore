@@ -1,10 +1,7 @@
-/.rebar
-/.eunit
 /c_src/*.o
 /c_src/*.d
-/ebin/*.beam
 /priv/*.so
-/support/rebar
+/dev/rebar3
 /_build
 /rebar.lock
 /*.html

@@ -1,7 +1,6 @@
-.PHONY: all clean install test
+.PHONY: all clean test
 
-REBAR=@`sh -c "PATH='$(PATH)':support which rebar\
-	||support/getrebar||echo false"`
+REBAR=@`sh -c "PATH='$(PATH)':support which rebar3||dev/getrebar||echo false"`
 
 all:
 	$(REBAR) compile
@@ -9,8 +8,8 @@ all:
 clean:
 	$(REBAR) clean
 
-install:
-	$(REBAR) install
-
 test:
 	$(REBAR) eunit
+
+dialyze:
+	$(REBAR) dialyzer

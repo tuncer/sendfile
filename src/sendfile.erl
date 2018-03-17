@@ -91,7 +91,7 @@ enabled() ->
 %% gen_server Function Definitions
 %% ------------------------------------------------------------------
 
-%% Will be defined for Linux, FreeBSD, DragonflyBSD, Solaris and Mac OS X
+%% Will be defined for Linux, FreeBSD, DragonflyBSD, Solaris and macOS
 -ifdef(HAVE_SENDFILE).
 
 -record(state, {

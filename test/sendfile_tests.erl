@@ -13,7 +13,7 @@
 -include_lib("eunit/include/eunit.hrl").
 
 -define(HOST,"localhost").
--define(TESTFILE,"../test/testfile").
+-define(TESTFILE,"test/testfile").
 -define(TIMEOUT, 10000).
 
 

@@ -1,6 +1,10 @@
 # Change Log
 Noteworthy changes to this project will be documented in this file.
 
+## 1.3.4 - 2018-03-17
+### Changed
+- Migrate to rebar3.
+
 ## 1.3.3 - 2018-01-01
 ### Changed
 - Update copyright years.
