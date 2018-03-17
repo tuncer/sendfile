@@ -1,6 +1,10 @@
 # Change Log
 Noteworthy changes to this project will be documented in this file.
 
+## 1.3.5 - 2018-03-17
+### Fixed
+- Makefile: add missing phony target.
+
 ## 1.3.4 - 2018-03-17
 ### Changed
 - Migrate to rebar3.
