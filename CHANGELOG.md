@@ -1,6 +1,10 @@
 # Change Log
 Noteworthy changes to this project will be documented in this file.
 
+## 1.3.6 - 2018-03-17
+### Fixed
+- rebar.config: enable clang compile commands db.
+
 ## 1.3.5 - 2018-03-17
 ### Fixed
 - Makefile: add missing phony target.
