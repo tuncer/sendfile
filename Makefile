@@ -1,4 +1,4 @@
-.PHONY: all clean test
+.PHONY: all clean test dialyze
 
 REBAR=@`sh -c "PATH='$(PATH)':support which rebar3||dev/getrebar||echo false"`
 
